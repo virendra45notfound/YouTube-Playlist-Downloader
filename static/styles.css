@@ -1,0 +1,161 @@
+/* Modernized Style for YouTube Downloader with Fixed Button Alignment */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+
+:root {
+  --bg-primary: #1e1e2f;
+  --bg-secondary: #2a2a3d;
+  --accent: #ff005b;
+  --text-primary: #e0e0e8;
+  --text-secondary: #b0b0c4;
+  --card-bg: rgba(30,30,47,0.9);
+  --shadow-color: rgba(0,0,0,0.4);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%; margin: 0; padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.bg-gradient {
+  position: fixed; inset: 0;
+  background: radial-gradient(circle at 20% 30%, #3f51b5, #1e1e2f 70%);
+  filter: blur(100px);
+  z-index: -1;
+}
+
+.container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+input[type="url"], select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+input[type="url"]:focus, select:focus {
+  outline: 2px solid var(--accent);
+  background: #3b3b52;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem 0;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+/* Ensure icon and text align perfectly */
+button .material-symbols-outlined {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.result {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  min-height: 1.2em;
+  color: var(--text-primary);
+}
+
+.info {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-size: 1.2rem;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--bg-secondary);
+  border-top: 3px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    margin: 40px 16px;
+    padding: 24px;
+  }
+  h1 { font-size: 1.5rem; }
+  button { font-size: 1rem; }
+}
