@@ -43,7 +43,7 @@ yt-downloader/
 ├── templates/
 │   └── index.html
 ├── static/
-│   └── style.css    # Updated modern dark theme stylesheet
+│   └── styles.css   
 └── downloads/       # Where downloaded files are saved
 ```
 
@@ -59,18 +59,3 @@ yt-downloader/
 4. Paste your YouTube URL.
 5. Click **Start Download**.
 
-## Styling Notes
-
-* The **style.css** now lives in `static/style.css` and contains a modern dark mode theme using CSS variables.
-* Key improvements:
-
-  * **Dark background** with vibrant accent (`#ff005b`).
-  * **Responsive layout** for mobile screens.
-  * **Button alignment fixed** via `display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;`.
-  * Browser caching issues can be resolved by doing a **hard reload** (Ctrl+Shift+R).
-
-> If you make further CSS changes, ensure the file path in `index.html` matches exactly:
->
-> ```html
-> <link rel="stylesheet" href="{{ url_for('sta
-> ```
