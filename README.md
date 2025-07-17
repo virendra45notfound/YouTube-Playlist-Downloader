@@ -1,158 +1,76 @@
-## YouTube & Playlist Downloader with yt-dlp
+# YouTube & Playlist Downloader
 
-Easily download single videos, entire playlists, or extract MP3 audio (songs) from any video or playlist on YouTube and many other supported sites—all via a simple, interactive Python script.
-
----
-
-### Features
-
-* Download individual YouTube (or supported site) videos in up to **1080p MP4** quality
-* Download complete playlists at the best available quality
-* Download **MP3 audio** from a single video or an entire playlist of songs
-* Automatic merging of video and audio using **FFmpeg**
-* Simple interactive CLI—no command-line flags needed
-* Error skipping for smooth batch downloads
+A sleek, modern Flask app for downloading YouTube videos, playlists, or MP3 audio using **yt-dlp** and **FFmpeg**.
 
 ---
 
-### Prerequisites
+## Features
 
-1. **Python** 3.7+ (tested up to 3.13.1)
+* Download single videos (up to 1080p) in MP4 format.
+* Download entire playlists of videos.
+* Extract MP3 audio from single videos or playlists.
+* Interactive, responsive UI with real-time status updates.
 
-   ```bash
-   python --version
-   ```
-2. **yt-dlp**
+## Installation
 
-   ```bash
-   pip install -U yt-dlp
-   ```
-3. **FFmpeg** (required for 1080p+ video merging and MP3 extraction)
-
-   * **Windows:**
-
-     1. Go to [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/)
-     2. Under **git master builds**, download **ffmpeg-git-full.7z** (or under **release builds**, download **ffmpeg-release-full.7z**)
-     3. Extract with 7-Zip and move the folder to `C:\ffmpeg`
-     4. Add `C:\ffmpeg\bin` to your **User** `PATH` environment variable
-     5. Restart your terminal and verify:
-
-        ```bash
-        ffmpeg -version
-        ```
-   * <details>
-     <summary>Linux / Mac</summary>
-
-     **Linux (Debian/Ubuntu):**
-
-     ```bash
-     sudo apt update
-     sudo apt install ffmpeg
-     ```
-
-     **macOS (Homebrew):**
-
-     ```bash
-     brew install ffmpeg
-     ```
-
-     </details>
-
----
-
-### Installation
-
-1. Clone this repository or download the script:
+1. Clone this repository:
 
    ```bash
    git clone https://github.com/virendra45notfound/YouTube-Playlist-Downloader.git
    cd YouTube-Playlist-Downloader
+   
    ```
-
-   Or simply download the `main.py` file.
-2. Ensure **yt-dlp** is installed:
+2. Create and activate a virtual environment (optional but recommended):
 
    ```bash
-   pip install -U yt-dlp
+   python3 -m venv venv
+   source venv/bin/activate  # macOS/Linux
+   venv\Scripts\activate     # Windows
    ```
-3. Confirm **FFmpeg** is installed and working (see prerequisites).
+3. Install dependencies:
 
----
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Ensure **FFmpeg** is installed and available in your PATH.
 
-### Usage
-
-Run the script from your terminal or command prompt:
-
-```bash
-python main.py
-```
-
-You will be prompted:
+## Project Structure
 
 ```
-What do you want to download?
-1. Single video (video + audio)
-2. Playlist (videos + audio)
-3. MP3 audio (single song or playlist)
-Enter 1, 2, or 3:
+yt-downloader/
+├── app.py
+├── requirements.txt
+├── templates/
+│   └── index.html
+├── static/
+│   └── style.css    # Updated modern dark theme stylesheet
+└── downloads/       # Where downloaded files are saved
 ```
 
-Respond as follows:
+## Usage
 
-1️⃣ **Single video**
+1. Run the Flask app:
 
-* Enter the **video URL**
-* Enter the **output directory**
+   ```bash
+   python app.py
+   ```
+2. Open your browser and go to `http://127.0.0.1:5000`.
+3. Select a download type (Video, Playlist, or MP3).
+4. Paste your YouTube URL.
+5. Click **Start Download**.
 
-2️⃣ **Playlist**
+## Styling Notes
 
-* Enter the **playlist URL**
-* Enter the **output directory**
+* The **style.css** now lives in `static/style.css` and contains a modern dark mode theme using CSS variables.
+* Key improvements:
 
-3️⃣ **MP3 audio**
+  * **Dark background** with vibrant accent (`#ff005b`).
+  * **Responsive layout** for mobile screens.
+  * **Button alignment fixed** via `display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;`.
+  * Browser caching issues can be resolved by doing a **hard reload** (Ctrl+Shift+R).
 
-* Choose:
-
-  * `a` → Single video MP3
-  * `b` → Playlist MP3
-* Enter the **URL** and **output directory**
-
-All files will be saved in your chosen directory, named after the video titles.
-
----
-
-### Output
-
-* **Videos:** MP4 files with merged audio/video up to 1080p
-* **MP3 Audio:** `.mp3` files at 192 kbps by default
-
----
-
-### Troubleshooting
-
-* **No audio in some videos?**
-
-  * Update VLC or use another modern player—some codecs (e.g., Opus) have playback issues in older versions.
-
-* **FFmpeg errors or audio extraction fails?**
-
-  * Double-check that `ffmpeg -version` works.
-
-* **HTTP Error 403 or fragment not found?**
-
-  * YouTube sometimes blocks high-res streams. The script automatically falls back to the next-best quality.
-
----
-
-### License
-
-MIT — see [LICENSE](https://opensource.org/licenses/MIT) file
-
----
-
-### Credits
-
-* **yt-dlp** for all the download and conversion magic
-* **FFmpeg** for audio/video processing
-
-Happy downloading! 🎉
+> If you make further CSS changes, ensure the file path in `index.html` matches exactly:
+>
+> ```html
+> <link rel="stylesheet" href="{{ url_for('sta
+> ```
