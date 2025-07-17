@@ -146,7 +146,7 @@ All files will be saved in your chosen directory, named after the video titles.
 
 ### License
 
-MIT — see [LICENSE](LICENSE) file
+MIT — see [LICENSE](https://opensource.org/licenses/MIT) file
 
 ---
 
