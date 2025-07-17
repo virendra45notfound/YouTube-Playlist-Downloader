@@ -1,1 +1,3 @@
-TODO
+flask
+yt-dlp
+ffmpeg-python
