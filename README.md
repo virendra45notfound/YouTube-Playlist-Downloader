@@ -28,12 +28,25 @@ A sleek, modern Flask app for downloading YouTube videos, playlists, or MP3 audi
    source venv/bin/activate  # macOS/Linux
    venv\Scripts\activate     # Windows
    ```
-3. Install dependencies:
+3. Install dependencies (Flask, yt-dlp, FFmpeg wrapper):
 
    ```bash
    pip install -r requirements.txt
    ```
 4. Ensure **FFmpeg** is installed and available in your PATH.
+
+   * macOS (Homebrew):
+
+     ```bash
+     brew install ffmpeg
+     ```
+   * Ubuntu/Debian:
+
+     ```bash
+     sudo apt install ffmpeg
+     ```
+   * Windows:
+     Download from [https://ffmpeg.org/download.html](https://ffmpeg.org/download.html), and add to your system PATH.
 
 ## Project Structure
 
