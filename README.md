@@ -1,127 +1,158 @@
-YouTube & Playlist Downloader with yt-dlp
-Easily download single videos, entire playlists, or extract MP3 audio (songs) from any video or playlist on YouTube and many other sites—all via a user-friendly Python script!
+## YouTube & Playlist Downloader with yt-dlp
 
-Features
-Download individual YouTube (or supported site) videos in up to 1080p MP4 quality
+Easily download single videos, entire playlists, or extract MP3 audio (songs) from any video or playlist on YouTube and many other supported sites—all via a simple, interactive Python script.
 
-Download complete playlists at the best available quality
+---
 
-Download MP3 audio from a single video or an entire playlist of songs
+### Features
 
-Automatic merging of video and audio using FFmpeg
+* Download individual YouTube (or supported site) videos in up to **1080p MP4** quality
+* Download complete playlists at the best available quality
+* Download **MP3 audio** from a single video or an entire playlist of songs
+* Automatic merging of video and audio using **FFmpeg**
+* Simple interactive CLI—no command-line flags needed
+* Error skipping for smooth batch downloads
 
-Simple interactive CLI—no command-line flags needed
+---
 
-Error skipping for smooth batch downloads
+### Prerequisites
 
-Prerequisites
-Python
-You need Python 3.7+ (tested up to Python 3.13.1).
-You can check your version with:
+1. **Python** 3.7+ (tested up to 3.13.1)
 
-text
-python --version
-yt-dlp
-Install via pip:
+   ```bash
+   python --version
+   ```
+2. **yt-dlp**
 
-text
-pip install -U yt-dlp
-FFmpeg
-Required for merging audio/video in 1080p+ and for audio extraction (MP3).
-See Windows install instructions below.
+   ```bash
+   pip install -U yt-dlp
+   ```
+3. **FFmpeg** (required for 1080p+ video merging and MP3 extraction)
 
-Installation
-Clone this repository or download the script
+   * **Windows:**
 
-text
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
-Or simply save the .py script from this repo.
+     1. Go to [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/)
+     2. Under **git master builds**, download **ffmpeg-git-full.7z** (or under **release builds**, download **ffmpeg-release-full.7z**)
+     3. Extract with 7-Zip and move the folder to `C:\ffmpeg`
+     4. Add `C:\ffmpeg\bin` to your **User** `PATH` environment variable
+     5. Restart your terminal and verify:
 
-Make sure yt-dlp is installed
+        ```bash
+        ffmpeg -version
+        ```
+   * <details>
+     <summary>Linux / Mac</summary>
 
-text
-pip install -U yt-dlp
-Install FFmpeg (Windows instructions)
+     **Linux (Debian/Ubuntu):**
 
-Go to: https://www.gyan.dev/ffmpeg/builds/
+     ```bash
+     sudo apt update
+     sudo apt install ffmpeg
+     ```
 
-Under "git master builds", download ffmpeg-git-full.7z (or under "release builds", download ffmpeg-release-full.7z).
+     **macOS (Homebrew):**
 
-Extract the downloaded .7z file using 7-Zip.
+     ```bash
+     brew install ffmpeg
+     ```
 
-Move the extracted folder (e.g., ffmpeg) to C:\ffmpeg for convenience.
+     </details>
 
-Add the C:\ffmpeg\bin directory to your system PATH environment variable:
+---
 
-Press Windows Key, search "Edit environment variables for your account"
+### Installation
 
-Click "Path" under "User variables" → Edit → New → Paste C:\ffmpeg\bin → OK all dialogs.
+1. Clone this repository or download the script:
 
-Open a new Command Prompt and check:
+   ```bash
+   git clone https://github.com/virendra45notfound/YouTube-Playlist-Downloader.git
+   cd YouTube-Playlist-Downloader
+   ```
 
-text
-ffmpeg -version
-If version info shows up, you're done.
+   Or simply download the `main.py` file.
+2. Ensure **yt-dlp** is installed:
 
-<details> <summary>Linux/Mac</summary>
-Linux (Debian/Ubuntu):
+   ```bash
+   pip install -U yt-dlp
+   ```
+3. Confirm **FFmpeg** is installed and working (see prerequisites).
 
-text
-sudo apt update
-sudo apt install ffmpeg
-Mac (Homebrew):
+---
 
-text
-brew install ffmpeg
-</details>
-Usage
-Run the script from a terminal/command prompt:
+### Usage
 
-text
-python your_script.py
+Run the script from your terminal or command prompt:
+
+```bash
+python main.py
+```
+
 You will be prompted:
-text
+
+```
 What do you want to download?
-1. Single video (video+audio)
-2. Playlist (videos+audio)
+1. Single video (video + audio)
+2. Playlist (videos + audio)
 3. MP3 audio (single song or playlist)
 Enter 1, 2, or 3:
+```
+
 Respond as follows:
 
-1 → Enter a single video URL and output directory.
+1️⃣ **Single video**
 
-2 → Enter a playlist URL and output directory.
+* Enter the **video URL**
+* Enter the **output directory**
 
-3 → Will further prompt:
+2️⃣ **Playlist**
 
-a → Enter single video URL and output directory for one MP3 song
+* Enter the **playlist URL**
+* Enter the **output directory**
 
-b → Enter playlist URL and output directory for all songs in MP3
+3️⃣ **MP3 audio**
 
-All downloaded files will be saved in the provided directory, using the YouTube video/title as the filename.
+* Choose:
 
-Output
-Videos: MP4 format with merged audio/video up to 1080p.
+  * `a` → Single video MP3
+  * `b` → Playlist MP3
+* Enter the **URL** and **output directory**
 
-MP3 Audio: .mp3 files, 192kbps by default.
+All files will be saved in your chosen directory, named after the video titles.
 
-Troubleshooting
-No audio in some files?
-Update VLC or use another modern player; some recent codec regressions in VLC can cause MP4+Opus playback issues.
+---
 
-FFmpeg errors or audio extraction fails?
-Double-check that FFmpeg is installed and ffmpeg -version works in your terminal/command prompt.
+### Output
 
-HTTP Error 403, fragment not found?
-Occasionally, YouTube blocks some high-res streams. The script will automatically fall back to the next-best available quality.
+* **Videos:** MP4 files with merged audio/video up to 1080p
+* **MP3 Audio:** `.mp3` files at 192 kbps by default
 
-License
-MIT — see LICENSE file.
+---
 
-Credits
-yt-dlp for all the download and conversion magic.
+### Troubleshooting
 
-FFmpeg for audio/video processing.
+* **No audio in some videos?**
 
-Happy downloading!
+  * Update VLC or use another modern player—some codecs (e.g., Opus) have playback issues in older versions.
+
+* **FFmpeg errors or audio extraction fails?**
+
+  * Double-check that `ffmpeg -version` works.
+
+* **HTTP Error 403 or fragment not found?**
+
+  * YouTube sometimes blocks high-res streams. The script automatically falls back to the next-best quality.
+
+---
+
+### License
+
+MIT — see [LICENSE](LICENSE) file
+
+---
+
+### Credits
+
+* **yt-dlp** for all the download and conversion magic
+* **FFmpeg** for audio/video processing
+
+Happy downloading! 🎉
