@@ -57,7 +57,7 @@ YouTube-Playlist-Downloader/
 ├── templates/
 │   └── index.html
 ├── static/
-│   └── style.css    # Updated modern dark theme stylesheet
+│   └── styles.css   
 └── downloads/       # Where downloaded files are saved
 ```
 
