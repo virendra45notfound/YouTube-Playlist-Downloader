@@ -46,7 +46,7 @@ A sleek, modern Flask app for downloading YouTube videos, playlists, or MP3 audi
      sudo apt install ffmpeg
      ```
    * Windows:
-     Download from [https://ffmpeg.org/download.html](https://www.gyan.dev/ffmpeg/builds/#git-master-builds) ffmpeg-git-full.7z, extract it to a simpler directory like in C:\ and add the bin folder inside of the extracted folder to your system PATH.
+     Download from [https://ffmpeg.org/download.html](https://www.gyan.dev/ffmpeg/builds/#git-master-builds) ffmpeg-git-full.7z, extract it to a simpler directory like in C:\ and add the bin folder path inside of the extracted folder to your system PATH.
      
      Check if ffmpeg is installed correctly or not by running the following command in command prompt
 
